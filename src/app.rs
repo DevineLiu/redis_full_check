@@ -1,7 +1,7 @@
 use clap::{self, Parser};
 
 #[derive(Parser, Debug, Clone)]
-#[clap(author="hrliu", version="v0.1", about="Used for comparing the differences between two online Redis servers.", long_about = None)]
+#[clap(author="hrliu", version="v0.2", about="Used for comparing the differences between two online Redis servers.", long_about = None)]
 pub struct Args {
     /// Source address，eg 127.0.0.1:30001;127.0.0.1:30002;127.0.0.1:30003
     #[clap(short, long, value_parser, default_value = "127.0.0.1:6379")]

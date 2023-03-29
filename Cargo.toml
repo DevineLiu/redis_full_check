@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 clap = {version = "4.1.13", features = ["derive"]}
-redis = {version = "0.22.3",default-features = false,features = ["tokio-comp","cluster","streams"]}
+redis = {version = "0.22.3",default-features = false,features = ["cluster"]}
 env_logger = {version = "0.10.0",default-features = false}
 log = {version = "0.4.16",default-features = false}
 regex = {version="1.7.3"}

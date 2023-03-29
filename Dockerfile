@@ -1,8 +1,17 @@
-FROM clux/muslrust:stable as builder
 
+FROM rust:1.61.0-alpine as builder
+
+
+RUN apk add rustup
+RUN apk add build-base
+RUN apk add binutils
+RUN rustup-init -y 
+ENV PATH=/root/.cargo/bin:"$PATH"
+RUN rustup default nightly-2023-03-24
 
 WORKDIR /workdir
 COPY ./ .
+# RUN source /root/.cargo/env
 RUN cargo build  --release
 
 
