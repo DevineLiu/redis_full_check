@@ -108,6 +108,15 @@ impl Comparator {
             if self.depth >= 10 {
                 let target_type: redis::Value =
                     self.target_con.req_command(redis::cmd("TYPE").arg(&key))?;
+                let source_type: redis::Value = self.source_check_con.req_command(redis::cmd("TYPE").arg(&key))?;
+                if target_type != source_type {
+                    diff_message.push(ResultMessage {
+                        key,
+                        info: Some(format!("type diff")),
+                        ..Default::default()
+                    });
+                    continue;
+                }
                 match target_type {
                     redis::Value::Status(_type) => match _type.as_str() {
                         "string" => {
