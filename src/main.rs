@@ -96,7 +96,7 @@ fn main() -> Result<()> {
         comparator.compare()?;
     };
     info!(
-        "success!!! result in {} :  `result_messages` tables",
+        "success!!! result in sqlite3: {}   `result` table",
         _args.db_path
     );
     Ok(())
