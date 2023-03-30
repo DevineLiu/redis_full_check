@@ -1,2 +1,13 @@
 /target
-result.db
+*.db
+/tests/*.log
+/tests/*.conf
+/tests/*.rdb
+/tests/*/*.log
+/tests/*/*.conf
+/tests/*/*.rdb
+/tests/*/*.aof
+/tests/*/*.manifest
+/tests/*/*/*.rdb
+/tests/*/*/*.aof
+/tests/*/*/*.manifest

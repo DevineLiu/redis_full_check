@@ -1,5 +1,5 @@
 use lazy_static::lazy_static;
-use log::{debug, warn};
+use log::{debug, warn, info};
 use redis::{self, ConnectionLike};
 use regex::{Regex};
 const TARGET_KEY_MISS: &str = "target key missing";
@@ -76,7 +76,7 @@ impl Comparator {
             .clone()
             .iter(self.source_con.as_mut())?;
         let mut diff_message = vec![];
-        
+        info!("scanning");
         for source_key in iter{
             let  length= diff_message.len();
             if length > self.batch_size {
@@ -84,7 +84,7 @@ impl Comparator {
                 diff_message.clear();
             }
             let key: String = redis::from_redis_value(&source_key)?;
-
+            
             if self.depth >= 0 {
                 let target_value: redis::Value = self
                     .target_con
@@ -105,10 +105,13 @@ impl Comparator {
                     }
                 }
             }
+            
             if self.depth >= 10 {
                 let target_type: redis::Value =
                     self.target_con.req_command(redis::cmd("TYPE").arg(&key))?;
+                
                 let source_type: redis::Value = self.source_check_con.req_command(redis::cmd("TYPE").arg(&key))?;
+                
                 if target_type != source_type {
                     diff_message.push(ResultMessage {
                         key,
@@ -253,7 +256,7 @@ impl Comparator {
                     _ => {}
                 }
             }
-
+            
             if self.depth >= 20 && !self.skip_debug_object {
                 let object_info: redis::Value = self
                     .target_con
