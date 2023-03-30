@@ -115,7 +115,7 @@ impl Comparator {
                 if target_type != source_type {
                     diff_message.push(ResultMessage {
                         key,
-                        info: Some(format!("type diff")),
+                        info: Some("type diff".to_string()),
                         ..Default::default()
                     });
                     continue;
