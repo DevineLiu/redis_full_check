@@ -15,6 +15,7 @@ pub fn get_connection(
         }
         "cluster" => {
             let con = redis::cluster::ClusterClient::new(con_info)?;
+            
             Ok(Box::new(con.get_connection()?))
         }
         source_type => Err(RedisError::from((
