@@ -9,13 +9,12 @@ pub fn get_connection(
     cluster_type: &str,
 ) -> redis::RedisResult<Box<dyn redis::ConnectionLike>> {
     match cluster_type {
-        "standlone" => {
+        "standalone" => {
             let con = redis::Client::open(con_info[0].clone())?;
             Ok(Box::new(con.get_connection()?))
         }
         "cluster" => {
             let con = redis::cluster::ClusterClient::new(con_info)?;
-            
             Ok(Box::new(con.get_connection()?))
         }
         source_type => Err(RedisError::from((

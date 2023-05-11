@@ -15,7 +15,7 @@ fn main() -> Result<()> {
 
     if _args.source_type == _args.target_type
         && _args.source_db == _args.target_db
-        && _args.source_type == "standlone"
+        && _args.source_type == "standalone"
         && _args.source_db == -1
     {
         
@@ -54,9 +54,9 @@ fn main() -> Result<()> {
 
         for addr in _args.source_address.split(';') {
             info!("Compare the shard you provided. {}",addr);
-            let source_con_standlone =
+            let source_con_standalone =
                 connection::get_source_conn_info_with_address(_args.clone(), addr.to_string());
-            let source_con = connection::get_connection(source_con_standlone.clone(), "standlone");
+            let source_con = connection::get_connection(source_con_standalone.clone(), "standalone");
 
             let source_conns_info = connection::get_source_conn_info(_args.clone());
             let source_check_con =

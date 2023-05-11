@@ -8,7 +8,7 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN rustup toolchain install 1.68.2
 
 COPY ./ .
-RUN  cargo build  --release
+RUN cargo build  --release
 
 
 FROM alpine:3.17.2
