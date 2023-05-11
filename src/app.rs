@@ -17,11 +17,11 @@ pub struct Args {
     #[clap(long, value_parser, default_value = "-1")]
     pub source_db: i64,
 
-    /// Source type,support standlone,cluster
+    /// Source type,support standalone,cluster
     #[clap(long, value_parser, default_value = "cluster")]
     pub source_type: String,
 
-    /// target type,support standlone,cluster
+    /// target type,support standalone,cluster
     #[clap(long, value_parser, default_value = "cluster")]
     pub target_type: String,
 

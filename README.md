@@ -17,9 +17,9 @@ Options:
       --source-db <SOURCE_DB>
           In Redis instances with both ends in standalone mode, databases are iterated based on the number of databases on the source end by default [default: -1]
       --source-type <SOURCE_TYPE>
-          Source type,support standlone,cluster [default: cluster]
+          Source type,support standalone,cluster [default: cluster]
       --target-type <TARGET_TYPE>
-          target type,support standlone,cluster [default: cluster]
+          target type,support standalone,cluster [default: cluster]
       --target-passwd <TARGET_PASSWD>
           
   -t, --target-address <TARGET_ADDRESS>
